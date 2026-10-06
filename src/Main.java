@@ -1,6 +1,9 @@
 import model.Course;
 import repository.CourseRepository;
+import repository.impl.FileCourseRepository;
 import repository.impl.InMemoryCourseRepository;
+import repository.impl.SimulatedFileRepository;
+import repository.impl.SimulatedMySQLCourseRepository;
 import service.CourseService;
 
 import java.util.List;
@@ -12,8 +15,15 @@ public class Main {
         // El repositorio se declara como la INTERFAZ, aunque el objeto real
         // sea un InMemoryCourseRepository. Esto es POLIMORFISMO aplicado
         // a la propia arquitectura del programa.
-        CourseRepository repository = new InMemoryCourseRepository();
+        //CourseRepository repository = new InMemoryCourseRepository();
+        //CourseService service = new CourseService(repository);
+        //CourseRepository repository = new SimulatedMySQLCourseRepository();
+        //CourseService service = new CourseService(repository);
+        //CourseRepository repository = new FileCourseRepository();
+        //CourseService service = new CourseService(repository);
+        CourseRepository repository = new SimulatedFileRepository();
         CourseService service = new CourseService(repository);
+
 
         // 1) Crear 3 cursos
         Course c1 = service.register("Java Básico", 40, "online");
